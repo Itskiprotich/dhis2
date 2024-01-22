@@ -29,7 +29,7 @@ public class Sdk {
         }
 
         return D2Configuration.builder()
-                .appName("skeleton_App")
+                .appName("Nacare_Ke_App")
                 .appVersion("0.0.1")
                 .readTimeoutInSeconds(30)
                 .connectTimeoutInSeconds(30)

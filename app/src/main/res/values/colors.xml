@@ -2,12 +2,36 @@
 <resources>
     <color name="colorWhite">#ffffff</color>
     <color name="colorEmpty">#ffeeeeee</color>
-    <color name="colorPrimary">#2a7fd4</color>
-    <color name="colorPrimaryDark">#276696</color>
+    <color name="colorPrimary">@color/purple_200</color>
+    <color name="colorPrimaryDark">@color/purple_200</color>
     <color name="colorAccent">#43cacb</color>
     <color name="colorAccentLight">#d8f7f7</color>
     <color name="colorAccentDark">#393d4d</color>
     <color name="colorAccentAlt">#f78f05</color>
     <color name="colorWarn">#e91e63</color>
     <color name="colorShadow">#88393d4d</color>
+
+    <color name="purple_200">#002F6C</color>
+    <color name="purple_500">#002F6C</color>
+    <color name="purple_700">#002F6C</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="gray">@android:color/darker_gray</color>
+
+    <color name="rippleColor">#42AAA9A9</color>
+    <color name="primary">#002E6A</color>
+    <color name="dataEntry">#F3F3F3</color>
+    <color name="secondary">#0167B8</color>
+    <color name="secondaryColor">#CBE0F0</color>
+    <color name="accent">#B80E2F</color>
+
+    <color name="light_shadow">#1F000000</color>
+    <color name="button_default_color">#2196F3</color>
+    <color name="button_pressed_color">#1565C0</color>
+    <color name="green">#4CAF50</color>
+    <color name="greyish">#aaa8a8</color>
+    <color name="mine_shaft">#303030</color>
+    <color name="awesome">#DBEFFF</color>
 </resources>

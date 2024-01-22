@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Dhis2 Skeleton App</string>
+    <string name="app_name">NaCaRe-Ke</string>
     <!-- Strings related to login -->
     <string name="title_activity_login">Log in</string>
     <string name="prompt_server_url">Server url</string>
@@ -88,4 +88,18 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="filter_background">filterBackground</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="server_url">Server URL</string>
+    <string name="login">Login</string>
+    <string name="account_recover">Account Recover</string>
+    <string name="for_assistance_on_the_national_cancer_registry_of_n_kenya_system_click_here_or_send_an_email_to_n_help_nacare_on_spiceworks_com">For assistance on the National Cancer Registry of\n Kenya System, click here or send an email to\n help@nacare.on.spiceworks.com</string>
+    <string name="some_data">Some Data</string>
+    <string name="help_desk">Help Desk</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
+    <string name="cancer_notification_tool">Cancer Notification Tool</string>
+    <string name="dashboard">Dashboard</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

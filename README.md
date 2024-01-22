@@ -42,7 +42,7 @@ use cases.
 This app allows to:
 
 * Login/Logout
-* Download metadata
+* Download metadatap;.
 * Download data
 * Upload data
 * Wipe data

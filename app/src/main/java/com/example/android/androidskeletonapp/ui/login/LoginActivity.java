@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputEditText usernameEditText;
     private TextInputEditText passwordEditText;
     private MaterialButton loginButton;
-    private ProgressBar loadingProgressBar;
+
 
     public static Intent getLoginActivityIntent(Context context) {
         return new Intent(context,LoginActivity.class);
@@ -45,11 +45,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory()).get(LoginViewModel.class);
 
-        serverUrlEditText = findViewById(R.id.urlText);
-        usernameEditText = findViewById(R.id.usernameText);
-        passwordEditText = findViewById(R.id.passwordText);
+        serverUrlEditText = findViewById(R.id.serverUrlEdittext);
+        usernameEditText = findViewById(R.id.usernameEdittext);
+        passwordEditText = findViewById(R.id.passwordEdittext);
         loginButton = findViewById(R.id.loginButton);
-        loadingProgressBar = findViewById(R.id.loginProgressBar);
 
         loginViewModel.getLoginFormState().observe(this, loginFormState -> {
             if (loginFormState == null) {
@@ -71,7 +70,6 @@ public class LoginActivity extends AppCompatActivity {
             if (loginResult == null) {
                 return;
             }
-            loadingProgressBar.setVisibility(View.GONE);
             if (loginResult.getError() != null) {
                 showLoginFailed(loginResult.getError());
             }
@@ -104,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
                         passwordEditText.getText().toString());
             }
         };
+        serverUrlEditText.setText("http://45.79.116.38:8080/");
         serverUrlEditText.addTextChangedListener(afterTextChangedListener);
         usernameEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
@@ -119,7 +118,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void login() {
-        loadingProgressBar.setVisibility(View.VISIBLE);
         loginButton.setVisibility(View.INVISIBLE);
         String username = usernameEditText.getText().toString();
         String password = passwordEditText.getText().toString();
