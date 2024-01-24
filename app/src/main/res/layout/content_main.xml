@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/_15dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.main.MainActivity"
     tools:showIn="@layout/activity_main">
@@ -272,6 +273,16 @@
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/_100_dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_dashboard" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

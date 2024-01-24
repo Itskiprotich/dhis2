@@ -14,9 +14,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nacare.capture.R;
 import com.nacare.capture.data.Sdk;
+import com.nacare.capture.data.adapters.DashAdapter;
+import com.nacare.capture.data.model.FormatterClass;
+import com.nacare.capture.data.model.HomeData;
 import com.nacare.capture.data.service.ActivityStarter;
 import com.nacare.capture.data.service.SyncStatusHelper;
 import com.nacare.capture.ui.code_executor.CodeExecutorActivity;
@@ -38,6 +43,7 @@ import org.hisp.dhis.android.core.tracker.exporter.TrackerD2Progress;
 import org.hisp.dhis.android.core.user.User;
 
 import java.text.MessageFormat;
+import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -72,8 +78,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView greeting = findViewById(R.id.greeting);
         greeting.setText(String.format("Hi %s!", user.displayName()));
 
+        loadDashboard();
+
         inflateMainView();
         createNavigationView(user);
+    }
+
+    private void loadDashboard() {
+        FormatterClass formatterClass = new FormatterClass();
+        List<HomeData> data = formatterClass.generateHomeData();
+
+        RecyclerView mRecyclerView = findViewById(R.id.recyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        DashAdapter adapter = new DashAdapter(this, data, this::handleClick);
+        mRecyclerView.setAdapter(adapter);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+    }
+
+    private void handleClick(HomeData homeData) {
+
     }
 
     @Override
@@ -245,10 +270,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void downloadData() {
         compositeDisposable.add(
                 Observable.merge(
-                        downloadTrackedEntityInstances(),
-                        downloadSingleEvents(),
-                        downloadAggregatedData()
-                )
+                                downloadTrackedEntityInstances(),
+                                downloadSingleEvents(),
+                                downloadAggregatedData()
+                        )
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnComplete(() -> {
