@@ -29,6 +29,7 @@ import com.nacare.capture.ui.d2_errors.D2ErrorActivity;
 import com.nacare.capture.ui.data_sets.DataSetsActivity;
 import com.nacare.capture.ui.data_sets.instances.DataSetInstancesActivity;
 import com.nacare.capture.ui.foreign_key_violations.ForeignKeyViolationsActivity;
+import com.nacare.capture.ui.main.custom.OrganizationActivity;
 import com.nacare.capture.ui.programs.ProgramsActivity;
 import com.nacare.capture.ui.tracked_entity_instances.TrackedEntityInstancesActivity;
 import com.nacare.capture.ui.tracked_entity_instances.search.TrackedEntityInstanceSearchActivity;
@@ -82,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         inflateMainView();
         createNavigationView(user);
+        setSyncing();
+        syncMetadata();
+        downloadData();
     }
 
     private void loadDashboard() {
@@ -258,7 +262,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .doOnError(Throwable::printStackTrace)
                 .doOnComplete(() -> {
                     setSyncingFinished();
-                    ActivityStarter.startActivity(this, ProgramsActivity.getProgramActivityIntent(this), false);
+//                    ActivityStarter.startActivity(this, ProgramsActivity.getProgramActivityIntent(this), false);
                 })
                 .subscribe());
     }
@@ -278,7 +282,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnComplete(() -> {
                             setSyncingFinished();
-                            ActivityStarter.startActivity(this, TrackedEntityInstancesActivity.getTrackedEntityInstancesActivityIntent(this, null), false);
+//                            ActivityStarter.startActivity(this, TrackedEntityInstancesActivity.getTrackedEntityInstancesActivityIntent(this, null), false);
                         })
                         .doOnError(Throwable::printStackTrace)
                         .subscribe());
@@ -286,12 +290,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private Observable<TrackerD2Progress> downloadTrackedEntityInstances() {
         return Sdk.d2().trackedEntityModule().trackedEntityInstanceDownloader()
-                .limit(10).limitByOrgunit(false).limitByProgram(false).download();
+                .limit(100).limitByOrgunit(false).limitByProgram(false).download();
     }
 
     private Observable<TrackerD2Progress> downloadSingleEvents() {
         return Sdk.d2().eventModule().eventDownloader()
-                .limit(10).limitByOrgunit(false).limitByProgram(false).download();
+                .limit(100).limitByOrgunit(false).limitByProgram(false).download();
     }
 
     private Observable<AggregatedD2Progress> downloadAggregatedData() {
@@ -333,6 +337,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             ActivityStarter.startActivity(this, ProgramsActivity.getProgramActivityIntent(this), false);
         } else if (id == R.id.navTrackedEntities) {
             ActivityStarter.startActivity(this, TrackedEntityInstancesActivity.getTrackedEntityInstancesActivityIntent(this, null), false);
+        } else if (id == R.id.menu_tool) {
+            ActivityStarter.startActivity(this, OrganizationActivity.getOrganizationActivityIntent(this), false);
         } else if (id == R.id.navTrackedEntitiesSearch) {
             ActivityStarter.startActivity(this, TrackedEntityInstanceSearchActivity.getIntent(this), false);
         } else if (id == R.id.navDataSets) {

@@ -111,7 +111,8 @@
                         android:id="@+id/usernameEdittext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="10dp" />
+                        android:padding="11dp"
+                        android:inputType="text" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

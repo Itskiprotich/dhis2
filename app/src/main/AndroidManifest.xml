@@ -16,12 +16,15 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m"
-        android:theme="@style/AppTheme">
+        tools:targetApi="m">
         <activity
-            android:exported="true"
-            android:name="com.nacare.capture.ui.splash.SplashActivity">
+            android:name=".ui.main.custom.OrganizationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.splash.SplashActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,56 +43,59 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.nacare.capture.ui.login.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name="com.nacare.capture.ui.main.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nacare.capture.ui.programs.ProgramsActivity"
+            android:name=".ui.programs.ProgramsActivity"
             android:label="@string/title_activity_programs"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nacare.capture.ui.tracked_entity_instances.TrackedEntityInstancesActivity"
+            android:name=".ui.tracked_entity_instances.TrackedEntityInstancesActivity"
             android:label="@string/title_activity_tracked_entity_instances"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nacare.capture.ui.tracked_entity_instances.search.TrackedEntityInstanceSearchActivity"
+            android:name=".ui.tracked_entity_instances.search.TrackedEntityInstanceSearchActivity"
             android:label="@string/title_activity_tracked_entity_search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nacare.capture.ui.enrollment_form.EnrollmentFormActivity"
+            android:name=".ui.enrollment_form.EnrollmentFormActivity"
             android:label="@string/title_activity_enrollment_form"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nacare.capture.ui.data_sets.DataSetsActivity"
+            android:name=".ui.data_sets.DataSetsActivity"
             android:label="@string/title_activity_data_sets"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nacare.capture.ui.data_sets.instances.DataSetInstancesActivity"
+            android:name=".ui.data_sets.instances.DataSetInstancesActivity"
             android:label="@string/title_activity_data_set_instances"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nacare.capture.ui.d2_errors.D2ErrorActivity"
+            android:name=".ui.d2_errors.D2ErrorActivity"
             android:label="@string/title_activity_d2_errors"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nacare.capture.ui.foreign_key_violations.ForeignKeyViolationsActivity"
+            android:name=".ui.foreign_key_violations.ForeignKeyViolationsActivity"
             android:label="@string/title_activity_fk_violations"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="com.nacare.capture.ui.code_executor.CodeExecutorActivity"
+            android:name=".ui.code_executor.CodeExecutorActivity"
             android:label="@string/code_executor"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.nacare.capture.ui.event_form.EventFormActivity"
+        <activity
+            android:name=".ui.event_form.EventFormActivity"
             android:label="@string/title_activity_event_form"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name="com.nacare.capture.ui.events.EventsActivity"
+        <activity
+            android:name=".ui.events.EventsActivity"
             android:label="@string/title_activity_events"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name="com.nacare.capture.ui.data_sets.instances.data_set_form.DataSetFormActivity" />
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.data_sets.instances.data_set_form.DataSetFormActivity" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -97,10 +103,12 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
-        <activity android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"
-            android:exported="true"/>
+
+        <activity
+            android:name="com.facebook.flipper.android.diagnostics.FlipperDiagnosticActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
