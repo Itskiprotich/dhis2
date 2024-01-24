@@ -38,9 +38,17 @@ public class ProgramsAdapter extends PagedListAdapter<Program, ListItemWithStyle
         holder.title.setText(program.displayName());
         holder.subtitle1.setText(program.programType() == ProgramType.WITH_REGISTRATION ?
                 "Program with registration" : "Program without registration");
-        StyleBinderHelper.bindStyle(holder, program.style());
+        holder.subtitle1.setVisibility(View.GONE);
+
+//        holder.icon.setImageResource(program.programType() == ProgramType.WITH_REGISTRATION ? R.drawable.patient : R.drawable.facility);
+        if (program.programType() == ProgramType.WITH_REGISTRATION) {
+            holder.icon.setImageResource(R.drawable.patient);
+        } else {
+            holder.icon.setImageResource(R.drawable.facility);
+        }
+//        StyleBinderHelper.bindStyle(holder, program.style());
 
         holder.card.setOnClickListener(view -> programSelectionListener
-                .onProgramSelected(program.uid(), program.programType()));
+                .onProgramSelected(program.uid(), program.programType(),program.displayName()));
     }
 }

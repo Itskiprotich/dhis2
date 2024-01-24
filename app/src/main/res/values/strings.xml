@@ -109,4 +109,5 @@
     <string name="search">Search</string>
     <string name="cancer_notification_tool">Cancer Notification Tool</string>
     <string name="previous">Previous</string>
+    <string name="select_tool">Select a Tool</string>
 </resources>

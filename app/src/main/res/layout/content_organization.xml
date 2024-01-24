@@ -23,19 +23,18 @@
             android:text="@string/cancer_notification" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/organizationLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:hint="@string/search"
-            app:boxBackgroundMode="outline"
-            app:endIconDrawable="@android:drawable/ic_menu_search"
-            app:endIconMode="custom">
+            app:boxBackgroundMode="outline">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/organizationEdittext"
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="textCapSentences" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -52,7 +52,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.programs.ProgramsActivity"
-            android:label="@string/title_activity_programs"
+            android:label="@string/cancer_notification_tool"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.tracked_entity_instances.TrackedEntityInstancesActivity"
@@ -92,7 +92,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.events.EventsActivity"
-            android:label="@string/title_activity_events"
+            android:label="Facility Details Capture Tool"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ui.data_sets.instances.data_set_form.DataSetFormActivity" />
 

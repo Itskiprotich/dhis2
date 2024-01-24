@@ -8,8 +8,10 @@ import android.view.View;
 import androidx.lifecycle.LiveData;
 import androidx.paging.PagedList;
 
+import com.google.android.material.button.MaterialButton;
 import com.nacare.capture.R;
 import com.nacare.capture.data.Sdk;
+import com.nacare.capture.data.model.FormatterClass;
 import com.nacare.capture.data.service.ActivityStarter;
 import com.nacare.capture.ui.base.ListActivity;
 import com.nacare.capture.ui.events.EventsActivity;
@@ -28,9 +30,10 @@ import io.reactivex.schedulers.Schedulers;
 public class ProgramsActivity extends ListActivity implements OnProgramSelectionListener {
 
     private Disposable disposable;
+    private MaterialButton nextButton;
 
-    public static Intent getProgramActivityIntent(Context context){
-        return new Intent(context,ProgramsActivity.class);
+    public static Intent getProgramActivityIntent(Context context) {
+        return new Intent(context, ProgramsActivity.class);
     }
 
     @Override
@@ -38,6 +41,9 @@ public class ProgramsActivity extends ListActivity implements OnProgramSelection
         super.onCreate(savedInstanceState);
         setUp(R.layout.activity_programs, R.id.programsToolbar, R.id.programsRecyclerView);
         observePrograms();
+        nextButton = findViewById(R.id.btn_proceed);
+        nextButton.setOnClickListener(v -> onBackPressed());
+
     }
 
     private void observePrograms() {
@@ -71,7 +77,9 @@ public class ProgramsActivity extends ListActivity implements OnProgramSelection
     }
 
     @Override
-    public void onProgramSelected(String programUid, ProgramType programType) {
+    public void onProgramSelected(String programUid, ProgramType programType, String type) {
+
+        new FormatterClass().saveSharedPref("program", type, this);
         if (programType == ProgramType.WITH_REGISTRATION)
             ActivityStarter.startActivity(this,
                     TrackedEntityInstancesActivity

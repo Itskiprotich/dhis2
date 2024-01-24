@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.nacare.capture.R;
 import com.nacare.capture.data.Sdk;
+import com.nacare.capture.data.model.FormatterClass;
 import com.nacare.capture.data.service.ActivityStarter;
 import com.nacare.capture.ui.base.ListActivity;
 import com.nacare.capture.ui.event_form.EventFormActivity;
@@ -113,11 +114,15 @@ public class EventsActivity extends ListActivity {
     private EventCollectionRepository getEventRepository() {
         EventCollectionRepository eventRepository =
                 Sdk.d2().eventModule().events().withTrackedEntityDataValues();
-        if (!isEmpty(selectedProgram)) {
-            return eventRepository.byProgramUid().eq(selectedProgram);
-        } else {
-            return eventRepository;
+        String orgUnit = new FormatterClass().getSharedPref("orgCode", this);
+        if (!isEmpty(orgUnit)) {
+            if (!isEmpty(selectedProgram)) {
+                return eventRepository.byProgramUid().eq(selectedProgram).byOrganisationUnitUid().eq(orgUnit);
+            } else {
+                return eventRepository;
+            }
         }
+        return null;
     }
 
     @Override
