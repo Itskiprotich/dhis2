@@ -11,9 +11,9 @@
     <color name="colorWarn">#e91e63</color>
     <color name="colorShadow">#88393d4d</color>
 
-    <color name="purple_200">#002F6C</color>
-    <color name="purple_500">#002F6C</color>
-    <color name="purple_700">#002F6C</color>
+    <color name="purple_200">#6B2D7A</color>
+    <color name="purple_500">@color/purple_200</color>
+    <color name="purple_700">@color/purple_200</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
